@@ -20,6 +20,7 @@ import { AdminOrdersComponent } from './admin/admin-orders/admin-orders.componen
 import { LoginComponent } from './pages/login/login.component';
 import { LogoutComponent } from './pages/logout/logout.component';
 import { AuthService } from './services/auth.service';
+import { AuthGuard } from './guards/auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,7 @@ import { AuthService } from './services/auth.service';
       {path: 'products', component: ProductsComponent},
       {path: 'my/orders', component: MyOrdersComponent},
       {path: 'shopping-cart', component: ShoppingCartComponent},
-      {path: 'check-out', component: CheckOutComponent},
+      {path: 'check-out', component: CheckOutComponent, canActivate: [AuthGuard]},
       {path: 'order-success', component: OrderSuccessComponent},
       {path: 'login', component: LoginComponent},
       {path: 'logout', component: LogoutComponent},
@@ -54,7 +55,7 @@ import { AuthService } from './services/auth.service';
       {path: 'admin/orders', component: AdminOrdersComponent},
     ])
   ],
-  providers: [AngularFireAuth, AuthService],
+  providers: [AngularFireAuth, AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-
+import 'rxjs/add/operator/map';
 @Component({
   selector: 'os-header',
   templateUrl: './header.component.html',
@@ -13,6 +13,9 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.auth.user$.map(user => {
+      console.log(user, 5555);
+    })
   }
 
   logout() {
