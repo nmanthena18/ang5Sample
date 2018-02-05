@@ -1,3 +1,36 @@
 <p>
-  admin-products works!
+    <a class="btn btn-primary" routerLink="/admin/products/new">New Product</a>
 </p>
+<p>
+    <input type="text" #query placeholder="Search..." class="form-control" (keyup)="filter(query.value)">
+</p>
+<div class="row">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>            
+        </thead>
+        <tbody>
+            <tr *ngFor="let p of filterProducts">
+                <td>{{p.title}}</td>
+                <td>{{p.price | currency:'USD':true}}</td>
+                <td>
+                    <a [routerLink]="['/admin/products/', p.$key]">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- <div class="col-md-4" *ngFor="let p of AllProducts | async">
+        <div class="card">
+            <img class="card-img-top" [src]="p.imageURL" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">{{p.title}}</h5>
+                <p class="card-text">Category: {{p.category}}</p>
+                <p>{{p.price | currency:'USD':true}}</p>
+            </div>
+        </div>
+    </div> -->
+</div>
