@@ -3,4 +3,5 @@ export interface Product {
     price:number;
     category:string;
     imageURL:string;
+    $key:string;
 }
