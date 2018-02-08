@@ -1,5 +1,6 @@
 <h2>Shopping Cart</h2>
-<ng-container *ngIf="cartcount">
+
+<ng-container *ngIf="cartcount; else noItemsInCart">
   <p>
     You have {{cartcount}} item in your shopping cart.
   </p>
@@ -37,4 +38,11 @@
     </tfoot>
   </table>
   <button (click)="clearCart()" class="btn btn-danger btn-sm">Clear Cart</button>
+</ng-container>
+<ng-template  #noItemsInCart>
+    <br><br>
+    <div class="alert alert-warning" role="alert">
+        No items in your Cart
+    </div>
+</ng-template>
 
