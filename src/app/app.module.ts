@@ -29,6 +29,8 @@ import { AdminAuth } from './guards/admin-auth.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 import { CategoryService } from './services/category.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
+import { shoppingCart } from './pages/shopping-cart/shopping-cart';
+import { ProductQuantityComponent } from './pages/product-quantity/product-quantity.component';
 
 
 @NgModule({
@@ -46,6 +48,7 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     LoginComponent,
     LogoutComponent,
     ProductFormComponent,
+    ProductQuantityComponent,
   ],
   imports: [
     FormsModule,
@@ -78,7 +81,8 @@ import { ShoppingCartService } from './services/shopping-cart.service';
     AuthGuard,
     AdminAuth,
     CategoryService,
-    ShoppingCartService
+    ShoppingCartService,
+    shoppingCart
   ],
   bootstrap: [AppComponent]
 })

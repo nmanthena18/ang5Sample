@@ -1,0 +1,16 @@
+
+<button class="btn btn-primary btn-block" (click)="addToCart(product)" *ngIf="getEachItemQuantity(product) == 0; else updateCart" >Add to cart</button>
+
+<ng-template #updateCart>
+<div class="row no-gutters" >
+    <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="removeFromCart(product)">-</button>
+    </div>
+    <div class="col-md-8 text-center">
+        <b>{{shoppingCart[product.$key].quantity}} in cart</b>
+    </div>
+    <div class="col-md-2">
+        <button class="btn btn-primary btn-block" (click)="addToCart(product)">+</button>
+    </div>
+</div>
+</ng-template>

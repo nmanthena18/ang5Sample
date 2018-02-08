@@ -17,7 +17,7 @@ export class ProductsComponent implements OnInit, OnDestroy  {
   category$:any = [];
   filterProducts:Product[] = [];
   private categoryParam:string;
-  private cart:any = {};
+  cart:any = {};
   private subscrition:Subscription
   constructor(
     private category:CategoryService,
@@ -30,27 +30,28 @@ export class ProductsComponent implements OnInit, OnDestroy  {
         return route.queryParamMap;
       }).subscribe(params =>{
         this.categoryParam = params.get('category');
- 
+
         this.filterProducts = (this.categoryParam) ? 
         this.product.filter(p => p.category === this.categoryParam ) : this.product;
       })
      category.getCategories().subscribe(c => this.category$ = c);
      
    }
+
    addToCart(p:Product){
       this.cartService.addToCart(p);
    }
+
    getQunatity(){
       this.cartService.getCart().then(
-        d => this.subscrition = d.subscribe(item => {this.cart = item
-          console.log(this.cart.item)
-        })
+        d => this.subscrition = d.subscribe(item => {this.cart = item.item})
       )
    }
+
+ 
    
    ngOnInit(){
-    this.getQunatity();
-    
+    this.getQunatity();    
    }
    ngOnDestroy(){
     this.subscrition.unsubscribe();

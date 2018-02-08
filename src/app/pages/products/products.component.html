@@ -23,8 +23,7 @@
                         <p><b>Price : {{p.price | currency : 'USD':true}}</b></p>                        
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary btn-block" (click)="addToCart(p)">Add to cart</button>
-                       {{cart.item[p.$key].quantity}}
+                        <product-quantity [product]="p" [shopping-cart]="cart"></product-quantity>
                     </div>
                 </div>
             </div>
