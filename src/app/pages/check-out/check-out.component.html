@@ -1,3 +1,28 @@
-<p>
-  check-out works!
-</p>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Shipping Details</h3>
+    <form [formGroup]="form" (ngSubmit)="shippingForm()">
+      <div *ngIf="form.isErrors ">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control"  placeholder="Full Name" formControlName="first" required>
+        <div class="alert alert-danger" *ngIf="form.get('first').touched && form.get('first').invalid"  >This field is required</div>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control"  placeholder="Phone Number" formControlName="pnumber" required >
+        <div class="alert alert-danger" *ngIf="form.get('pnumber').touched && form.get('pnumber').invalid" >This field is required</div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" placeholder="Please fill the Address" rows="3" formControlName="address"></textarea>
+        <div class="alert alert-danger" *ngIf="form.get('address').touched && form.get('address').invalid" >
+          <div *ngIf="form.get('address').errors.required">This field is required</div>
+          <div *ngIf="form.get('address').errors.minlength">Please give min 20 char</div>
+        </div>
+      </div>
+      <button type="submit" [disabled]="!form.valid" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+      <h3>Cart Details</h3>
+  </div>
+</div>

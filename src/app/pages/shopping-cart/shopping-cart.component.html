@@ -17,7 +17,7 @@
     <ng-container *ngFor="let p of products">
      <tbody *ngIf="cart$ | async as cart">
       <tr *ngIf="cart.item[p.$key] && cart.item[p.$key].quantity > 0">
-        <td><img [src]="cart.item[p.$key].product.imageURL" class="thumbnail" [alt]="cart.item[p.$key].product.title"></td>
+        <td><div [style.backgroundImage]="'url('+cart.item[p.$key].product.imageURL+')'" class="thumbnail"></div></td>
         <td >{{cart.item[p.$key].product.title}}</td>
         <td>
             <product-quantity [product]="p" [shopping-cart]="cart.item"></product-quantity>
@@ -37,6 +37,7 @@
       </tr>
     </tfoot>
   </table>
+  <a class="btn btn-primary btn-sm" routerLink="/check-out">Check Out</a>
   <button (click)="clearCart()" class="btn btn-danger btn-sm">Clear Cart</button>
 </ng-container>
 <ng-template  #noItemsInCart>

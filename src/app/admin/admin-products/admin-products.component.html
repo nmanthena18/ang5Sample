@@ -5,32 +5,37 @@
     <input type="text" #query placeholder="Search..." class="form-control" (keyup)="filter(query.value)">
 </p>
 <div class="row">
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Price</th>
-                <th>Action</th>
-            </tr>            
-        </thead>
-        <tbody>
-            <tr *ngFor="let p of filterProducts">
-                <td>{{p.title}}</td>
-                <td>{{p.price | currency:'USD':true}}</td>
-                <td>
-                    <a [routerLink]="['/admin/products/', p.$key]">Edit</a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <!-- <div class="col-md-4" *ngFor="let p of AllProducts | async">
-        <div class="card">
-            <img class="card-img-top" [src]="p.imageURL" alt="Card image cap">
-            <div class="card-body">
-                <h5 class="card-title">{{p.title}}</h5>
-                <p class="card-text">Category: {{p.category}}</p>
-                <p>{{p.price | currency:'USD':true}}</p>
-            </div>
-        </div>
-    </div> -->
+    <data-table id="persons-grid"
+        headerTitle=""
+        [items]="items"
+        [itemCount]="itemCount"
+        (reload)="reloadItems($event)"
+
+        (rowClick)="rowClick($event)"
+        (rowDoubleClick)="rowDoubleClick($event)"
+        [rowTooltip]="rowTooltip"
+        >
+        <data-table-column
+            [property]="'title'"
+            [header]="'Title'"
+            [sortable]="true"
+            [resizable]="true">
+        </data-table-column>
+        <data-table-column
+            [property]="'price'"
+            [header]="'Price'"
+            [sortable]="true">
+            <ng-template #dataTableCell let-item="item">
+                <span>{{item.price | currency:'USD':'$'}}</span>
+            </ng-template>
+        </data-table-column>
+        <data-table-column
+            property="'$key'"
+            header="Action"
+            width="150px">
+            <ng-template #dataTableCell let-item="item">
+                <a [routerLink]="['/admin/products/', item.$key]">Edit</a>
+            </ng-template>
+        </data-table-column> 
+    </data-table>
 </div>

@@ -7,6 +7,7 @@ import {RouterModule} from '@angular/router';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
 import { CustomFormsModule } from 'ng2-validation';
+import { ReactiveFormsModule } from '@angular/forms';
 //import { DataTableModule } from 'angular-4-data-table';
 
 import { AppComponent } from './app.component';
@@ -31,7 +32,7 @@ import { CategoryService } from './services/category.service';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { shoppingCart } from './pages/shopping-cart/shopping-cart';
 import { ProductQuantityComponent } from './pages/product-quantity/product-quantity.component';
-
+import { DataTableModule } from 'angular5-data-table';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import { ProductQuantityComponent } from './pages/product-quantity/product-quant
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     CustomFormsModule,
+    ReactiveFormsModule,
+    DataTableModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {path: '', component: ProductsComponent},
@@ -64,7 +67,7 @@ import { ProductQuantityComponent } from './pages/product-quantity/product-quant
       {path: 'products', component: ProductsComponent},
 
       {path: 'my/orders', component: MyOrdersComponent, canActivate:[AuthGuard]},
-      {path: 'shopping-cart', component: ShoppingCartComponent, canActivate:[AuthGuard]},
+      {path: 'shopping-cart', component: ShoppingCartComponent,},
       {path: 'check-out', component: CheckOutComponent, canActivate:[AuthGuard]},
       {path: 'order-success', component: OrderSuccessComponent, canActivate:[AuthGuard]},
 
