@@ -1,0 +1,16 @@
+<div class="card">
+  <div class="card-body" *ngIf="items">
+    <h5 class="card-title">Summary Details</h5>
+    <p>You have {{itemsTotal}}  items in your cart</p>
+    <table class="table"> 
+      <tr *ngFor="let i of items">
+        <td> {{i.quantity}} x {{i.product.title}}</td>
+        <td> {{i.totalPrice | currency :"USD":"$"}}</td>
+      </tr>
+      <tr class="font-weight-blod">
+        <td><b>Total </b></td>
+        <td>{{itemsTotalPrice | currency :"USD":"$"}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

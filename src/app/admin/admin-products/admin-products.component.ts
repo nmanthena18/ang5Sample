@@ -4,7 +4,6 @@ import { OnDestroy } from '@angular/core/src/metadata/lifecycle_hooks';
 import { Subscription } from 'rxjs/Subscription';
 import { Product } from '../../interfaces/product';
 import { DataTableResource } from 'angular5-data-table';
-import { setTimeout } from 'timers';
 @Component({
   selector: 'app-admin-products',
   templateUrl: './admin-products.component.html',
